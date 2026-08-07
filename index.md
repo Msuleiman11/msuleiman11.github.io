@@ -1,123 +1,82 @@
+Cybersecurity graduate working toward a SOC analyst role. eJPTv2 certified,
+CompTIA Security+ in progress, eligible for SC clearance. Based in Luton, UK.
+
+This page collects what I've built and documented. Everything here is my own
+work, carried out in training or lab environments.
+
 ---
-layout: default
+
+## Alert Investigations
+
+Documented end-to-end SOC investigations: process chain reconstruction,
+evidence analysis, verdict reasoning, MITRE ATT&CK mapping, and detection
+tuning recommendations. Wrong turns are kept in the write-ups rather than
+deleted.
+
+**[View the full portfolio →](https://github.com/Msuleiman11/soc-analyst-portfolio)**
+
+| # | Investigation | Verdict |
+|---|---|---|
+| 01 | CVE-2024-49138 CLFS privilege escalation | True Positive |
+| 02 | Malicious macro loader, second stage failed | True Positive |
+| 03 | Impersonating domain phishing, user clicked | True Positive |
+
 ---
 
-Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
+## Home SOC Lab
 
-[Link to another page](./another-page.html).
+*In progress.*
 
-There should be whitespace between paragraphs.
+Building a Wazuh SIEM across a multi-VM environment with Windows and Linux
+endpoints. Deploying agents, configuring file integrity monitoring and Sysmon
+telemetry, writing detection rules, then triggering attacks against the lab
+and investigating the resulting alerts.
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+Write-ups will cover the detections I build and, more usefully, how I would
+evade them.
 
-# Header 1
+---
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+## Human-in-the-Loop Penetration Testing Framework
 
-## Header 2
+*BSc dissertation, 2026*
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+A Flask, Jinja2 and SQLite web application that integrates a large language
+model to assist penetration testing workflows. Every suggested action
+requires a human accept, modify or reject decision before it can execute.
 
-### Header 3
+The design principle was that the model was confidently wrong often enough
+that unsupervised action was the real risk. Evaluated against Hack The Box
+target machines, with automated reporting and CSV export.
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
+---
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
+## Technical Skills
 
-#### Header 4
+**Security operations** — alert triage, incident investigation, log analysis,
+phishing analysis, threat intelligence, IOC analysis, MITRE ATT&CK, detection
+tuning
 
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
+**Tools** — Wireshark, VirusTotal, Nmap, Metasploit, Burp Suite, Sysmon,
+Windows Event Logs, Wazuh
 
-##### Header 5
+**Scripting** — Python, Bash, PowerShell, SQL
 
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
+**Platforms** — Windows, Linux, AWS
 
-###### Header 6
+---
 
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
+## Certifications
 
-### There's a horizontal rule below this.
+- CompTIA Security+ (SY0-701) — in progress
+- eLearnSecurity Junior Penetration Tester (eJPTv2) — INE, March 2025
+- Cyber Threat Management — Cisco, November 2024
+- Google Cybersecurity Certificate — Coursera, August 2024
 
-* * *
+---
 
-### Here is an unordered list:
+## Contact
 
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
+[LinkedIn](https://www.linkedin.com/in/mohammad-suleiman-367a23201/) ·
+[GitHub](https://github.com/Msuleiman11) ·
+suleiman.mohammad1@outlook.com
