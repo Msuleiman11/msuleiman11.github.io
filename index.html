@@ -320,6 +320,48 @@
 
   .entry li strong{color:var(--bone);font-weight:500}
 
+  /* ---------- case list ---------- */
+
+  .caselist{
+    border-top:1px solid var(--edge-soft);
+    margin:20px 0 4px;
+  }
+
+  .caserow{
+    display:grid;
+    grid-template-columns:76px 1fr auto;
+    gap:16px;
+    align-items:baseline;
+    padding:12px 0;
+    border-bottom:1px solid var(--edge-soft);
+  }
+
+  .caserow-id{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--signal);
+  }
+
+  .caserow-title{
+    font-size:15px;
+    color:var(--bone);
+  }
+
+  .caserow-ttp{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted-2);
+    white-space:nowrap;
+  }
+
+  @media (max-width:640px){
+    .caserow{
+      grid-template-columns:1fr;
+      gap:4px;
+    }
+    .caserow-ttp{white-space:normal}
+  }
+
   /* ---------- link ---------- */
 
   .link{
@@ -506,111 +548,6 @@
   </div>
 </header>
 
-<section id="cases">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-title">Case files</span>
-      <span class="sec-rule"></span>
-      <span class="sec-note">04 documented</span>
-    </div>
-
-    <p class="sec-intro reveal">
-      Each investigation reconstructs the attack chain from raw telemetry, states the
-      verdict with its reasoning, and separates what the evidence established from what
-      it only suggested. Wrong turns stay in the write-ups rather than being deleted.
-    </p>
-
-    <article class="case reveal">
-      <div class="delta">
-        <span class="delta-num">44</span><span class="delta-unit">seconds</span>
-        <p class="delta-cap">user click<br>→ SYSTEM</p>
-      </div>
-      <div class="case-body">
-        <div class="case-top">
-          <span class="case-id">SOC335</span>
-          <span class="verdict">True positive</span>
-        </div>
-        <h3 class="case-title">CLFS driver privilege escalation</h3>
-        <p class="case-text">
-          A binary named <code>svohost.exe</code> — one letter from the real Windows
-          service host — ran from a temp directory and escalated a standard user to
-          SYSTEM through an unpatched CLFS vulnerability. The process tree ruled it
-          out as legitimate before any reputation check did.
-        </p>
-        <div class="ttp"><span>T1068</span><span>T1036.005</span><span>T1059.001</span></div>
-      </div>
-    </article>
-
-    <article class="case reveal">
-      <div class="delta">
-        <span class="delta-num">2</span><span class="delta-unit">seconds</span>
-        <p class="delta-cap">download<br>→ execution</p>
-      </div>
-      <div class="case-body">
-        <div class="case-top">
-          <span class="case-id">SOC205</span>
-          <span class="verdict">True positive</span>
-        </div>
-        <h3 class="case-title">Macro loader, second stage failed</h3>
-        <p class="case-text">
-          An invoice-themed macro launched PowerShell, which resolved an external domain
-          and requested a payload. The server returned 404, so nothing landed. The
-          request itself was permitted — the attack failed on the attacker's mistake,
-          not on a control.
-        </p>
-        <div class="ttp"><span>T1204.002</span><span>T1059.001</span><span>T1105</span></div>
-      </div>
-    </article>
-
-    <article class="case reveal">
-      <div class="delta">
-        <span class="delta-num">20</span><span class="delta-unit">hours</span>
-        <p class="delta-cap">warning issued<br>→ user clicked</p>
-      </div>
-      <div class="case-body">
-        <div class="case-top">
-          <span class="case-id">SOC326</span>
-          <span class="verdict">True positive</span>
-        </div>
-        <h3 class="case-title">Impersonating domain phishing</h3>
-        <p class="case-text">
-          Threat intel named a typosquat domain that had just configured an MX record.
-          Twenty hours later that exact domain sent a phishing email, and the user
-          clicked. Every control saw it. Nothing turned the warning into a block.
-        </p>
-        <div class="ttp"><span>T1583.001</span><span>T1566.002</span><span>T1204.001</span></div>
-      </div>
-    </article>
-
-    <article class="case reveal">
-      <div class="delta">
-        <span class="delta-num">321</span><span class="delta-unit">hosts</span>
-        <p class="delta-cap">encrypted from<br>one compromise</p>
-      </div>
-      <div class="case-body">
-        <div class="case-top">
-          <span class="case-id">KC7</span>
-          <span class="verdict">Confirmed incident</span>
-        </div>
-        <h3 class="case-title">LockByte ransomware, healthcare provider</h3>
-        <p class="case-text">
-          Traced 321 encrypted hosts back to a single ransom note and from there to
-          patient zero. A purpose-built exporter staged patient records to a network
-          share before curl pushed them out. Pivoting on the exfil domain's resolved
-          IPs surfaced a second attacker domain and a compromised account.
-        </p>
-        <div class="ttp"><span>T1486</span><span>T1048</span><span>T1078</span><span>T1070.004</span></div>
-      </div>
-    </article>
-
-    <p class="link-row reveal">
-      <a class="link" href="https://github.com/Msuleiman11/soc-analyst-portfolio">
-        Read the full write-ups →
-      </a>
-    </p>
-  </div>
-</section>
-
 <section id="lab">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -671,7 +608,66 @@
       <p>
         The interesting problem wasn't capability. It was that the model was
         <strong>confidently wrong often enough</strong> that letting it act unsupervised
-        was the actual risk.
+        was the actual risk. The first build let it run commands directly; it produced
+        actions that went outside the defined scope, so I rebuilt it around a human
+        gate rather than patching individual failures.
+      </p>
+      <!-- Add your repo link here once the code is on GitHub:
+      <p class="link-row reveal">
+        <a class="link" href="https://github.com/Msuleiman11/hil-ptf">
+          View the code →
+        </a>
+      </p>
+      -->
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-title">Investigations</span>
+      <span class="sec-rule"></span>
+      <span class="sec-note">04 documented</span>
+    </div>
+
+    <div class="entry reveal">
+      <h3 class="entry-title">Documented alert investigations</h3>
+      <p class="entry-meta">LetsDefend · KC7</p>
+      <p>
+        Each write-up reconstructs the attack chain from raw telemetry, states the
+        verdict with its reasoning, and separates what the evidence established from
+        what it only suggested. <strong>Wrong turns stay in rather than being deleted</strong>,
+        including findings I withdrew when the evidence didn't hold.
+      </p>
+
+      <div class="caselist">
+        <div class="caserow">
+          <span class="caserow-id">SOC335</span>
+          <span class="caserow-title">CLFS driver privilege escalation</span>
+          <span class="caserow-ttp">T1068 · T1036.005 · T1059.001</span>
+        </div>
+        <div class="caserow">
+          <span class="caserow-id">SOC205</span>
+          <span class="caserow-title">Macro loader, second stage failed</span>
+          <span class="caserow-ttp">T1204.002 · T1059.001 · T1105</span>
+        </div>
+        <div class="caserow">
+          <span class="caserow-id">SOC326</span>
+          <span class="caserow-title">Impersonating domain phishing</span>
+          <span class="caserow-ttp">T1583.001 · T1566.002 · T1204.001</span>
+        </div>
+        <div class="caserow">
+          <span class="caserow-id">KC7</span>
+          <span class="caserow-title">LockByte ransomware, 321 hosts encrypted</span>
+          <span class="caserow-ttp">T1486 · T1048 · T1078 · T1070.004</span>
+        </div>
+      </div>
+
+      <p class="link-row reveal">
+        <a class="link" href="https://github.com/Msuleiman11/soc-analyst-portfolio">
+          Read the full write-ups →
+        </a>
       </p>
     </div>
   </div>
