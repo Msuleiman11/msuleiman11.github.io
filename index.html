@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mohammad Suleiman — SOC Analyst</title>
-<meta name="description" content="SOC analyst portfolio. Documented alert investigations, detection engineering and lab work.">
+<title>Mohammad Suleiman — Cybersecurity</title>
+<meta name="description" content="Cybersecurity portfolio. Documented alert investigations, detection engineering and lab work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -294,6 +294,32 @@
 
   .entry strong{color:var(--bone);font-weight:500}
 
+  .entry ul{
+    list-style:none;
+    margin:0 0 14px;
+    padding:0;
+    max-width:62ch;
+  }
+
+  .entry li{
+    color:var(--muted);
+    font-size:15px;
+    padding:5px 0 5px 18px;
+    position:relative;
+  }
+
+  .entry li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:14px;
+    width:6px;
+    height:1px;
+    background:var(--muted-2);
+  }
+
+  .entry li strong{color:var(--bone);font-weight:500}
+
   /* ---------- link ---------- */
 
   .link{
@@ -401,8 +427,39 @@
 
   @keyframes rise{to{opacity:1;transform:none}}
 
+  /* scroll reveal */
+
+  .reveal{
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .7s cubic-bezier(.2,.7,.3,1),
+               transform .7s cubic-bezier(.2,.7,.3,1);
+    will-change:opacity,transform;
+  }
+
+  .reveal.seen{
+    opacity:1;
+    transform:none;
+  }
+
+  .reveal[data-delay="1"]{transition-delay:.08s}
+  .reveal[data-delay="2"]{transition-delay:.16s}
+  .reveal[data-delay="3"]{transition-delay:.24s}
+  .reveal[data-delay="4"]{transition-delay:.32s}
+
+  .sec-rule{
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .8s cubic-bezier(.2,.7,.3,1) .1s;
+  }
+
+  .seen .sec-rule,
+  .sec-head.seen .sec-rule{transform:scaleX(1)}
+
   @media (prefers-reduced-motion:reduce){
     .rise{animation:none;opacity:1;transform:none}
+    .reveal{opacity:1;transform:none;transition:none}
+    .sec-rule{transform:none;transition:none}
     html{scroll-behavior:auto}
   }
 
@@ -432,7 +489,7 @@
 
 <header class="masthead">
   <div class="wrap">
-    <p class="eyebrow rise">SOC analyst portfolio</p>
+    <p class="eyebrow rise">Cybersecurity portfolio</p>
     <h1 class="name rise" style="animation-delay:.06s">Mohammad<br>Suleiman</h1>
     <p class="role rise" style="animation-delay:.12s">Security Operations · Detection &amp; Response</p>
     <p class="lede rise" style="animation-delay:.18s">
@@ -441,8 +498,8 @@
       prove, <strong>what I couldn't</strong>, and what detection would have caught it earlier.
     </p>
     <div class="status rise" style="animation-delay:.24s">
+      <span class="chip"><b>Security+</b> certified</span>
       <span class="chip"><b>eJPTv2</b> certified</span>
-      <span class="chip"><b>Security+</b> in progress</span>
       <span class="chip"><b>SC clearance</b> eligible</span>
       <span class="chip">Luton, UK</span>
     </div>
@@ -451,19 +508,19 @@
 
 <section id="cases">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="sec-title">Case files</span>
       <span class="sec-rule"></span>
-      <span class="sec-note">03 documented</span>
+      <span class="sec-note">04 documented</span>
     </div>
 
-    <p class="sec-intro">
+    <p class="sec-intro reveal">
       Each investigation reconstructs the attack chain from raw telemetry, states the
       verdict with its reasoning, and separates what the evidence established from what
       it only suggested. Wrong turns stay in the write-ups rather than being deleted.
     </p>
 
-    <article class="case">
+    <article class="case reveal">
       <div class="delta">
         <span class="delta-num">44</span><span class="delta-unit">seconds</span>
         <p class="delta-cap">user click<br>→ SYSTEM</p>
@@ -484,7 +541,7 @@
       </div>
     </article>
 
-    <article class="case">
+    <article class="case reveal">
       <div class="delta">
         <span class="delta-num">2</span><span class="delta-unit">seconds</span>
         <p class="delta-cap">download<br>→ execution</p>
@@ -505,7 +562,7 @@
       </div>
     </article>
 
-    <article class="case">
+    <article class="case reveal">
       <div class="delta">
         <span class="delta-num">20</span><span class="delta-unit">hours</span>
         <p class="delta-cap">warning issued<br>→ user clicked</p>
@@ -525,7 +582,28 @@
       </div>
     </article>
 
-    <p class="link-row">
+    <article class="case reveal">
+      <div class="delta">
+        <span class="delta-num">321</span><span class="delta-unit">hosts</span>
+        <p class="delta-cap">encrypted from<br>one compromise</p>
+      </div>
+      <div class="case-body">
+        <div class="case-top">
+          <span class="case-id">KC7</span>
+          <span class="verdict">Confirmed incident</span>
+        </div>
+        <h3 class="case-title">LockByte ransomware, healthcare provider</h3>
+        <p class="case-text">
+          Traced 321 encrypted hosts back to a single ransom note and from there to
+          patient zero. A purpose-built exporter staged patient records to a network
+          share before curl pushed them out. Pivoting on the exfil domain's resolved
+          IPs surfaced a second attacker domain and a compromised account.
+        </p>
+        <div class="ttp"><span>T1486</span><span>T1048</span><span>T1078</span><span>T1070.004</span></div>
+      </div>
+    </article>
+
+    <p class="link-row reveal">
       <a class="link" href="https://github.com/Msuleiman11/soc-analyst-portfolio">
         Read the full write-ups →
       </a>
@@ -535,24 +613,39 @@
 
 <section id="lab">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="sec-title">Lab</span>
       <span class="sec-rule"></span>
-      <span class="sec-note">in progress</span>
+      <span class="sec-note">built &amp; documented</span>
     </div>
 
-    <div class="entry">
+    <div class="entry reveal">
       <h3 class="entry-title">Home SOC lab — Wazuh SIEM</h3>
-      <p class="entry-meta">Building now</p>
+      <p class="entry-meta">Wazuh 4.14.7 · Ubuntu endpoint · bridged VirtualBox network</p>
       <p>
-        A multi-VM environment running Wazuh, with Windows and Linux endpoints reporting
-        in. Agent deployment, file integrity monitoring, Sysmon telemetry, and custom
-        detection rules.
+        A Wazuh server and a monitored Linux endpoint on the same network, with a
+        Windows host used as the attack source. Everything below was configured,
+        attacked and investigated end to end.
       </p>
+      <ul>
+        <li><strong>SSH brute force</strong> — watched individual level 5 authentication
+            failures escalate into a level 10 correlated brute-force detection once
+            eight arrived inside two minutes. Same events, different conclusion.</li>
+        <li><strong>File integrity monitoring</strong> — configured syscheck against a
+            directory of my own, then traced modification, addition and deletion alerts
+            back to before-and-after content hashes.</li>
+        <li><strong>Breaking it</strong> — a single missing character in the agent config
+            took the endpoint offline entirely. Diagnosed and fixed, and written up,
+            because that failure is more instructive than a clean run.</li>
+      </ul>
       <p>
-        The point isn't the setup. It's running attacks against my own environment, then
-        investigating the alerts as if I didn't know what caused them — and documenting
-        <strong>how I'd evade the rules I just wrote</strong>.
+        Next: custom detection rules, so the alerting logic is mine rather than
+        Wazuh's defaults — and Windows telemetry, which is the gap in the lab as it stands.
+      </p>
+      <p class="link-row reveal">
+        <a class="link" href="https://github.com/Msuleiman11/soc-analyst-portfolio/blob/main/projects/wazuh-soc-home-lab.md">
+          Read the lab write-up →
+        </a>
       </p>
     </div>
   </div>
@@ -560,13 +653,13 @@
 
 <section id="project">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="sec-title">Project</span>
       <span class="sec-rule"></span>
       <span class="sec-note">dissertation</span>
     </div>
 
-    <div class="entry">
+    <div class="entry reveal">
       <h3 class="entry-title">Human-in-the-loop penetration testing framework</h3>
       <p class="entry-meta">BSc Cybersecurity · University of Bedfordshire · 2026</p>
       <p>
@@ -586,29 +679,33 @@
 
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="sec-title">Skills</span>
       <span class="sec-rule"></span>
     </div>
 
     <div class="grid">
-      <div>
+      <div class="reveal">
         <h3>Security operations</h3>
         <p>Alert triage · Incident investigation · Log analysis · Phishing analysis
            · Threat intelligence · IOC analysis · MITRE ATT&amp;CK · Detection tuning</p>
       </div>
-      <div>
+      <div class="reveal" data-delay="1">
+        <h3>SIEM &amp; query</h3>
+        <p>Wazuh (deployed and configured) · Microsoft Sentinel · Azure Log Analytics
+           · KQL · Windows Event Logs</p>
+      </div>
+      <div class="reveal" data-delay="2">
         <h3>Tools</h3>
-        <p>Wazuh · Sysmon · Wireshark · VirusTotal · Nmap · Metasploit · Burp Suite
-           · Windows Event Logs</p>
+        <p>Wireshark · VirusTotal · Nmap · Metasploit · Burp Suite</p>
       </div>
-      <div>
+      <div class="reveal" data-delay="3">
         <h3>Scripting</h3>
-        <p>Python · Bash · PowerShell · SQL</p>
+        <p>Python · Bash · SQL</p>
       </div>
-      <div>
+      <div class="reveal" data-delay="4">
         <h3>Platforms</h3>
-        <p>Windows · Linux · AWS</p>
+        <p>Windows · Linux · VirtualBox</p>
       </div>
     </div>
   </div>
@@ -616,29 +713,33 @@
 
 <section id="certs">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="sec-title">Certifications</span>
       <span class="sec-rule"></span>
     </div>
 
-    <div class="cert">
+    <div class="cert reveal">
       <span class="cert-name">CompTIA Security+ (SY0-701)</span>
+      <span class="cert-when">Aug 2026</span>
+    </div>
+    <div class="cert reveal">
+      <span class="cert-name">Microsoft SC-200 Security Operations Analyst</span>
       <span class="cert-when live">In progress</span>
     </div>
-    <div class="cert">
+    <div class="cert reveal">
       <span class="cert-name">eLearnSecurity Junior Penetration Tester (eJPTv2) · INE</span>
       <span class="cert-when">Mar 2025</span>
     </div>
-    <div class="cert">
+    <div class="cert reveal">
       <span class="cert-name">Cyber Threat Management · Cisco</span>
       <span class="cert-when">Nov 2024</span>
     </div>
-    <div class="cert">
+    <div class="cert reveal">
       <span class="cert-name">Google Cybersecurity Certificate · Coursera</span>
       <span class="cert-when">Aug 2024</span>
     </div>
-    <div class="cert">
-      <span class="cert-name">BSc (Hons) Cybersecurity · University of Bedfordshire</span>
+    <div class="cert reveal">
+      <span class="cert-name">BSc (Hons) Cybersecurity, 2:1 · University of Bedfordshire</span>
       <span class="cert-when">2026</span>
     </div>
   </div>
@@ -646,23 +747,43 @@
 
 <footer>
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="sec-title">Contact</span>
       <span class="sec-rule"></span>
     </div>
 
-    <div class="contact">
+    <div class="contact reveal">
       <a href="https://www.linkedin.com/in/mohammad-suleiman-367a23201/">LinkedIn</a>
       <a href="https://github.com/Msuleiman11">GitHub</a>
       <a href="mailto:suleiman.mohammad1@outlook.com">suleiman.mohammad1@outlook.com</a>
     </div>
 
-    <p class="colophon">
+    <p class="colophon reveal">
       All investigations carried out in training and lab environments.<br>
       Open to SOC analyst roles across Luton, London and remote.
     </p>
   </div>
 </footer>
 
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window) ||
+     window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    for(var i=0;i<items.length;i++){ items[i].classList.add('seen'); }
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('seen');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+  for(var j=0;j<items.length;j++){ obs.observe(items[j]); }
+})();
+</script>
 </body>
 </html>
