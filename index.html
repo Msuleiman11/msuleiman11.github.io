@@ -611,18 +611,20 @@
   }
 
   .tape-track{
-    display:inline-block;
+    display:flex;
+    width:max-content;
     white-space:nowrap;
     font-family:var(--mono);
     font-size:11px;
     letter-spacing:.24em;
     color:var(--muted-2);
-    animation:slide 34s linear infinite;
+    animation:slide 18s linear infinite;
   }
 
-  .tape-track span{color:var(--signal);margin:0 4px}
+  .tape-seg{flex:0 0 auto}
+  .tape-track b{color:var(--signal);font-weight:400}
 
-  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-25%)}}
 
   @media (prefers-reduced-motion:reduce){
     .tape-track{animation:none}
@@ -735,7 +737,10 @@
 
 <div class="tape" aria-hidden="true">
   <div class="tape-track">
-    THREAT MONITORING ACTIVE<span>•</span>AUTHORIZED ACCESS ONLY<span>•</span>DETECTION &amp; RESPONSE<span>•</span>SECURE ZONE<span>•</span>THREAT MONITORING ACTIVE<span>•</span>AUTHORIZED ACCESS ONLY<span>•</span>DETECTION &amp; RESPONSE<span>•</span>SECURE ZONE<span>•</span>
+    <span class="tape-seg">THREAT MONITORING ACTIVE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;AUTHORIZED ACCESS ONLY&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;DETECTION &amp; RESPONSE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;SECURE ZONE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;</span>
+    <span class="tape-seg">THREAT MONITORING ACTIVE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;AUTHORIZED ACCESS ONLY&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;DETECTION &amp; RESPONSE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;SECURE ZONE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;</span>
+    <span class="tape-seg">THREAT MONITORING ACTIVE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;AUTHORIZED ACCESS ONLY&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;DETECTION &amp; RESPONSE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;SECURE ZONE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;</span>
+    <span class="tape-seg">THREAT MONITORING ACTIVE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;AUTHORIZED ACCESS ONLY&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;DETECTION &amp; RESPONSE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;SECURE ZONE&nbsp;&nbsp;<b>&bull;</b>&nbsp;&nbsp;</span>
   </div>
 </div>
 
