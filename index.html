@@ -532,6 +532,38 @@
   }
 
 
+
+  /* ---------- download CTA ---------- */
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:.03em;
+    color:var(--ink);
+    background:var(--signal);
+    text-decoration:none;
+    padding:11px 18px;
+    border-radius:4px;
+    transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+  }
+
+  .cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(169,112,255,.28);
+    background:#B985FF;
+  }
+
+  .cta-pfx{opacity:.6}
+
+  .cta-arrow{
+    transition:transform .16s ease;
+  }
+
+  .cta:hover .cta-arrow{transform:translateY(2px)}
+
   /* ---------- boot overlay ---------- */
 
   #boot{
@@ -634,81 +666,6 @@
     .dot::after{animation:none}
   }
 
-  /* ---------- terminal ---------- */
-
-  .term{
-    background:#070510;
-    border:1px solid var(--edge);
-    border-radius:6px;
-    overflow:hidden;
-    font-family:var(--mono);
-    box-shadow:0 20px 60px rgba(0,0,0,.4);
-  }
-
-  .term-bar{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:10px 14px;
-    border-bottom:1px solid var(--edge-soft);
-    background:var(--surface);
-  }
-
-  .term-bar i{
-    width:11px;height:11px;border-radius:50%;
-    background:var(--edge);
-    display:inline-block;
-  }
-
-  .term-bar i:nth-child(1){background:#E0607E}
-  .term-bar i:nth-child(2){background:#E8A33D}
-  .term-bar i:nth-child(3){background:var(--clear)}
-
-  .term-bar b{
-    margin-left:8px;
-    font-size:12px;
-    font-weight:400;
-    color:var(--muted-2);
-    letter-spacing:.04em;
-  }
-
-  .term-body{
-    padding:18px;
-    font-size:13.5px;
-    line-height:1.75;
-    color:var(--bone);
-    min-height:210px;
-    max-height:340px;
-    overflow-y:auto;
-  }
-
-  .term-body .out{color:var(--muted);white-space:pre-wrap}
-  .term-body .cmd{color:var(--signal)}
-  .term-body .pfx{color:var(--clear)}
-  .term-body .err{color:#E0607E}
-
-  .term-input-row{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:0 18px 18px;
-    font-family:var(--mono);
-    font-size:13.5px;
-  }
-
-  .term-input-row .pfx{color:var(--clear)}
-
-  .term-input{
-    flex:1;
-    background:transparent;
-    border:none;
-    color:var(--bone);
-    font-family:var(--mono);
-    font-size:13.5px;
-    outline:none;
-    caret-color:var(--signal);
-  }
-
   /* ---------- about ---------- */
 
   .about p{
@@ -740,7 +697,6 @@
     .delta-cap{margin-top:0;width:100%}
     .case-body{padding:22px}
     .sec-note{display:none}
-    .term-body{min-height:170px}
   }
 </style>
 </head>
@@ -756,15 +712,23 @@
     <h1 class="name rise" style="animation-delay:.06s">Mohammad<br>Suleiman<span class="caret" aria-hidden="true"></span></h1>
     <p class="role rise" style="animation-delay:.12s">Security Operations · Detection &amp; Response</p>
     <p class="lede rise" style="animation-delay:.18s">
-      Cybersecurity graduate working toward a SOC analyst role. I investigate alerts
-      end to end and write each one up properly: what the evidence showed, what I could
-      prove, <strong>what I couldn't</strong>, and what detection would have caught it earlier.
+      Cybersecurity graduate in Luton, working toward a SOC analyst role. I came in from
+      two years in physical security — monitoring sites, triaging incidents, writing
+      reports that had to hold up — and the digital version was the same instinct: find
+      the thing that doesn't fit. I investigate alerts end to end and write each one up
+      properly, <strong>including the findings I withdraw when the evidence doesn't hold.</strong>
     </p>
     <div class="status rise" style="animation-delay:.24s">
       <span class="chip"><b>Security+</b> certified</span>
       <span class="chip"><b>eJPTv2</b> certified</span>
       <span class="chip"><b>SC clearance</b> eligible</span>
       <span class="chip">Luton, UK</span>
+    </div>
+    <div class="rise" style="animation-delay:.3s;margin-top:26px">
+      <a class="cta" href="Mohammad_Suleiman_CV.pdf" download>
+        <span class="cta-pfx">$</span> download CV
+        <span class="cta-arrow">&#8595;</span>
+      </a>
     </div>
   </div>
 </header>
@@ -775,38 +739,6 @@
   </div>
 </div>
 
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-title">About</span>
-      <span class="sec-rule"></span>
-      <span class="live"><span class="dot"></span>OPEN TO WORK</span>
-    </div>
-    <div class="about">
-      <p class="reveal">
-        I'm a cybersecurity graduate based in Luton, working toward a Level 1 SOC
-        analyst role. I came into security from the other side of it — over two years
-        as a security officer, monitoring live sites, triaging incidents and writing
-        the reports that had to hold up afterwards. The digital version turned out to
-        be the same instinct: <strong>look for the thing that doesn't fit, and most of
-        what you look at is nothing.</strong>
-      </p>
-      <p class="reveal" data-delay="1">
-        Since then I've built the technical side deliberately rather than waiting for a
-        job to hand it to me — a 2:1 BSc, CompTIA Security+, eJPTv2, and a home SIEM lab
-        I built, attacked and investigated end to end. I publish my investigation
-        write-ups in full, <strong>including the findings I had to withdraw when the
-        evidence didn't hold</strong>, because that's the part that shows how the
-        reasoning actually works.
-      </p>
-      <p class="reveal" data-delay="2">
-        I'm currently working through KQL and Microsoft SC-200, and I'm looking for a
-        SOC role where I can do this properly, on real telemetry, alongside people who
-        know more than I do.
-      </p>
-    </div>
-  </div>
-</section>
 
 <section id="lab">
   <div class="wrap">
@@ -1002,29 +934,6 @@
   </div>
 </section>
 
-<section id="terminal">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-title">Terminal</span>
-      <span class="sec-rule"></span>
-      <span class="sec-note">type 'help'</span>
-    </div>
-    <div class="term reveal" id="term">
-      <div class="term-bar">
-        <i></i><i></i><i></i>
-        <b>msuleiman@soc:~</b>
-      </div>
-      <div class="term-body" id="termBody">
-        <div class="out">Type <span class="cmd">help</span> to see what's here.</div>
-      </div>
-      <div class="term-input-row">
-        <span class="pfx">msuleiman@soc:~$</span>
-        <input class="term-input" id="termInput" autocomplete="off" spellcheck="false" aria-label="terminal input">
-      </div>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
     <div class="sec-head reveal">
@@ -1040,7 +949,7 @@
 
     <p class="colophon reveal">
       All investigations carried out in training and lab environments.<br>
-      Open to SOC analyst roles across Luton, London and remote.
+      Open to SOC analyst roles across the UK and remote — happy to relocate.
     </p>
   </div>
 </footer>
@@ -1141,49 +1050,6 @@
     scramble();
   }
 
-  /* ---------- interactive terminal ---------- */
-  var input = document.getElementById('termInput');
-  var body = document.getElementById('termBody');
-  if(input && body){
-    var cmds = {
-      help: "Available commands:\n  about      who I am\n  skills     what I work with\n  projects   what I've built\n  certs      qualifications\n  contact    how to reach me\n  clear      wipe the screen",
-      about: "Cybersecurity graduate in Luton, moving from two years of physical security into a SOC analyst role. I investigate alerts end to end and document them honestly — including the findings I withdraw.",
-      skills: "SIEM: Wazuh, Microsoft Sentinel, KQL\nOps: alert triage, incident investigation, threat intel, MITRE ATT&CK\nTools: Wireshark, Nmap, Metasploit, Burp Suite\nScripting: Python, Bash, SQL",
-      projects: "1. Home SOC lab (Wazuh) — built, attacked, investigated\n2. Four documented investigations (LetsDefend, KC7)\n3. HIL-PTF — dissertation, AI-assisted pentest framework with a human approval gate\n\nScroll up, or: github.com/Msuleiman11",
-      certs: "CompTIA Security+ (2026)\neJPTv2 — INE (2025)\nSC-200 — in progress\nBSc (Hons) Cybersecurity, 2:1",
-      contact: "email:    suleiman.mohammad1@outlook.com\nlinkedin: /in/mohammad-suleiman-367a23201\ngithub:   Msuleiman11"
-    };
-    function print(txt, cls){
-      var d = document.createElement('div');
-      d.className = cls || 'out';
-      d.textContent = txt;
-      body.appendChild(d);
-      body.scrollTop = body.scrollHeight;
-    }
-    function run(raw){
-      var c = raw.trim().toLowerCase();
-      var echo = document.createElement('div');
-      echo.innerHTML = '<span class="pfx">msuleiman@soc:~$</span> <span class="cmd">'+raw.replace(/</g,'&lt;')+'</span>';
-      body.appendChild(echo);
-      if(c === ''){ return; }
-      if(c === 'clear'){ body.innerHTML = ''; return; }
-      if(cmds[c]){ print(cmds[c]); }
-      else if(c === 'ls'){ print(cmds.projects); }
-      else if(c === 'whoami'){ print('msuleiman — SOC analyst (in training)'); }
-      else { print("command not found: " + c + "   (try 'help')", 'err'); }
-    }
-    input.addEventListener('keydown', function(e){
-      if(e.key === 'Enter'){
-        run(input.value);
-        input.value = '';
-        body.scrollTop = body.scrollHeight;
-      }
-    });
-    var termWrap = document.getElementById('term');
-    if(termWrap){
-      termWrap.addEventListener('click', function(){ input.focus(); });
-    }
-  }
 })();
 </script>
 </body>
